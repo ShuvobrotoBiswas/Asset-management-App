@@ -1,5 +1,5 @@
 <template>
-   <div class="q-pa-md q-gutter-md" style="max-width: 1920px">
+   <div class="q-pa-md q-gutter-md" style="max-width: 2400px">
      <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -27,7 +27,7 @@
      <q-input v-model="text" label="DESCRIPTION" />
 
      <!-- Checkbox -->
-     
+     <div>
       <q-checkbox
         v-model="customModel"
         color="blue"
@@ -36,14 +36,13 @@
         false-value="no"
       />
      <q-input v-model="text" label="REASON FOR DISCARDING" />
-     <q-checkbox
-        v-model="customModel"
-        color="blue"
-        label="Mark Discarded"
-        true-value="yes"
-        false-value="no"
-      />
+    <q-option-group
+      :options="option1"
+      type="checkbox"
+      v-model="group"
+    />
      <q-input v-model="text" label="REASON FOR DISCARDING" />
+     </div>
      <!-- Checkbox End -->
      <q-card-actions align="right" class="text-primary">
         <q-btn label="Cancel" type="reset" color="primary" flat class="q-ml-sm" />
@@ -63,12 +62,16 @@ export default {
      const $q = useQuasar()
 
     return {
+      group: ref([]),
       text,
       model: ref(null),
       options: [
-        'LAPTOP', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+        'LAPTOP', 'MOUSE', 'KEYBOARD', 'HEADPHONE', 'PC'
       ],
-      date: ref('2021/01/29'),
+       option1: [
+        { label: 'Mark Discarded', value: 'bat' },
+      ],
+      date: ref('2022/01/01'),
       customModel: ref(''),
       save: ref(''),
       onSubmit () {''},
