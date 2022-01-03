@@ -31,6 +31,7 @@
 import { ref } from 'vue'
 export default {
   // name: 'PageName',
+  // name: 'PageName',
   setup () {
     const test = ref('')
     const submitting = ref(false)
