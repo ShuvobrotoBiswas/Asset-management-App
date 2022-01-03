@@ -1,15 +1,8 @@
 <template>
-  <div class="q-pa-md q-gutter-sm" style="max-width: 1920px">
+  <div class="q-pa-md q-gutter-sm" style="max-width: 2400px">
     <q-btn label="Delete Item" color="primary" @click="confirm = true" />
 
-    <q-dialog v-model="alert">
-      <q-card>
-        
-        <q-card-actions align="right">
-          <q-btn flat label="OK" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+   
 
     <q-dialog v-model="confirm" persistent>
       <q-card>
@@ -34,6 +27,7 @@ export default {
   // name: 'PageName',
    setup () {
     return {
+      alert,
       confirm: ref(false),
       address: ref('')
     }
