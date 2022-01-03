@@ -1,5 +1,5 @@
 <template>
- <div class="q-pa-md q-gutter-sm" style="max-width: 1920px">
+ <div class="q-pa-md q-gutter-sm" style="max-width: 2400px">
     <q-btn label="DISCARD" color="primary" @click="prompt = true" />
 
     <q-dialog v-model="prompt" persistent>
