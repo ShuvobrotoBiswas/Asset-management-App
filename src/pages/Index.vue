@@ -56,6 +56,3 @@ export default defineComponent({
 })
 
 </script>
-<style lang="sass">
-
-</style>
