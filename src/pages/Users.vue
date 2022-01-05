@@ -1,16 +1,17 @@
 <template>
   <div>
-    <q-list bordered separator class="text-weight-bolder">
+    <q-list v-if="listUser.length" bordered separator class="text-weight-bolder">
       <q-item to="/User-Equipments" clickable v-ripple
-        v-for="list in listUser"
-        :key="list.uid"
+        v-for="user in listUser"
+        :key="user.uid"
       >
+      
         <q-item-section avatar>
           <q-avatar>
-            <img :src="list.avatar" alt="" />
+            <img :src=" 'http://127.0.0.1:8000\\uploads\\users\\'+ user.image" alt="" />
           </q-avatar>
         </q-item-section>
-        <q-item-section>{{ list.name }}</q-item-section>
+        <q-item-section>{{ user.full_name }} {{ user.image}}</q-item-section>
       </q-item>
     </q-list>
     <div class="q-pa-md q-gutter-sm fixed-bottom-right " >
@@ -27,7 +28,7 @@
       <q-card style="min-width: 350px">
         <q-card-section>
           <q-form>
-            <q-input type="text" label="First Name" />
+            <q-input v-model="save" type="text" label="First Name" />
             <q-input type="text" label="Last Name" />
             <q-card-actions align="right">
               <q-btn class="q-mt-xl" color="gray" text-color="#ddd"
@@ -56,45 +57,34 @@
 </template>
 
 <script>
-const userList = [
-  {
-    uid: 1,
-    name: "Reza Khan",
-    avatar: require("../assets/users/15800314_10154926544776410_2425918391803358445_o.png"),
-  },
-  {
-    uid: 2,
-    name: "John Doe",
-    avatar: require("../assets/users/jon-doe.png"),
+import axios from "axios";
 
-  },
-  {
-    uid: 3,
-    name: "Dong-Seok Han",
-    avatar: require("../assets/users/idphoto.png"),
-  },
-  {
-    uid: 4,
-    name: "Nur Rony",
-    avatar: require("../assets/users/Nikola-Vukovic-772x1030.png"),
-  },
-  {
-    uid: 5,
-    name: "Sandra Deibert",
-    avatar: require("../assets/users/images3.png"),
-
-  },
-];
 
 export default {
   // name: 'PageName',
-   data() {
+   data()  {
     return {
       prompt: false,
-      listUser: userList,
+      listUser:[],
       address: "",
     };
   },
+
+  created (){
+    const options = {
+  method: 'GET',
+  url: 'http://127.0.0.1:8000/api/users',
+  headers: { "Authorization": "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl"}
+};
+
+axios.request(options).then( ( response) =>{
+  console.log(response.data);
+  this.listUser=response.data
+}).catch(function (error) {
+  console.error(error);
+});
+  },
+  
 
 }
 </script>
