@@ -1,36 +1,38 @@
 <template>
-  <div class="q-pa-md q-gutter-sm" style="max-width: 2400px">
-    <q-btn label="Delete Item" color="primary" @click="confirm = true" />
 
-   
+    <div class="row"  >
+        <q-item to="/Equipments">
+      <div class="col"  > 
+        <q-item-section >{{ list.name  }} 
+        </q-item-section>
+      </div>
+        </q-item>
+      <div class="col">
+        <q-btn active clickable v-ripple flat round dense icon="more_vert" class="q-mr-xs">
+        <q-menu>
+          <q-list style="min-width: 100px"> 
+            <q-item @click="confirm1 = true"  clickable v-close-popup>
+              <q-item-section>Edit</q-item-section>
+            </q-item>
+             <q-separator />
+             <q-item  @click="confirm = true" clickable v-close-popup >
+              <q-item-section>Delete</q-item-section>
+          </q-item>
+             <q-separator />
+          </q-list>
+        </q-menu>
+      </q-btn>
+      </div>
+    </div>
 
-    <q-dialog v-model="confirm" persistent>
-      <q-card>
-        <q-card-section class="row items-center">
-          <span class="q-ml-sm">Are you sure you want to delete this category and all equipment under it?</span>
-        </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="CANCEL" color="black" v-close-popup />
-          <q-btn flat label="DELETE" color="red" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
-   
-  </div>
 </template>
 
-<script>
-import { ref } from 'vue'
-export default {
-  // name: 'PageName',
-   setup () {
-    return {
-      alert,
-      confirm: ref(false),
-      address: ref('')
-    }
-  }
-}
-</script>
+<style lang="sass" scoped>
+.row > div
+  padding: 10px 15px
+  background: rgba(86,61,124,.15)
+  border: 1px solid rgba(86,61,124,.2)
+.row + .row
+  margin-top: 1rem
+</style>
