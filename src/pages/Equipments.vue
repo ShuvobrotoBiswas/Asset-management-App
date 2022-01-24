@@ -3,13 +3,14 @@
   
 <q-list separator class="text-weight-bolder">
       <q-item
-        v-for="list in equipmentlist"
-        :key="list.uid"
+        v-for="list in attributes"
+        :key="list.id"
       >
         
-        <q-item-section >{{ list.Equipment  }} <br> {{ list.element}}
-        
+        <q-item-section > {{ list.attributes.brand}} <br> {{list.attributes.product_code}} {{ list.attributes.model}} 
+        {{list.attributes.description}}
         </q-item-section>
+        
         <q-btn  flat round dense icon="more_vert" class="q-mr-xs">
         <q-menu>
           <q-list style="min-width: 100px"> 
@@ -85,41 +86,18 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <div class="q-pa-md q-gutter-sm fixed-bottom-right ">
-    <q-btn round color="primary" icon="add" />
+
+    <!-- Add  -->
+
+    <div class="q-pa-md q-gutter-sm fixed-bottom-right " > 
+    <q-btn round color="primary" icon="add" to="/Add-Equipments" />
   </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-const quiplist = [
-  {
-    uid: 1,
-    Equipment: "Lenovo X1 Carbon",
-    element: "i5 664-U, 8GB, 128GB, 1080p, Touch",
-  },
-  {
-    uid: 2,
-    Equipment: "Lenovo X240",
-    element: "i3 400-U, 16GB, 256GB, 1080p, Backlit",
-  },
-  {
-    uid: 3,
-    Equipment: "Dell XPS 13",
-    element: "i7 664-U, 16GB, 512GB, 1440x900, stylus",
-  },
-   {
-    uid: 4,
-    Equipment: "Lenovo X1 Carbon",
-    element: "i5 664-U, 8GB, 128GB, 1080p, Touch",
-  },
-   {
-    uid: 5,
-    Equipment: "Lenovo X1 Carbon",
-    element: "i5 664-U, 8GB, 128GB, 1080p, Touch",
-  },
-];
+import axios from "axios";
 
 export default {
   // name: 'PageName',
@@ -128,14 +106,59 @@ export default {
       discard: false,
       confirm: false,
       mark: false,
-      equipmentlist: quiplist,
       address: "",
-      save: ref('')
+      save: ref(''),
+      attributes: [],
+      flag: this.$route.params.id,
     };
   },
 
+
+  // SHOW
+
+  created (){
+    const options = {
+  method: 'GET',
+  url: "http://127.0.0.1:8000/api/products/"+this.flag,
+  headers: { "Authorization": "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl"}
+};
+
+axios.request(options).then( ( response) =>{
+  console.log(response.data);
+  this.attributes=response.data
+}).catch(function (error) {
+  console.error(error);
+});
+
+  },
+
+
+
+methods: {   
+// Delete
+
+deleteCategory (){
+  
+    const options = {
+  method: 'delete',
+  url:  "http://127.0.0.1:8000/api/products/5" ,
+  data: {
+    name:this.name
+  },
+  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl" } 
+};
+ axios.request(options).then((response) => {
+   console.log(response.data);
+   this.name = response.data;
+ })
+ .catch(function (error) { console.error(error) ;
+ } );
+
+},
+
+},
+
+
 }
 </script>
-<style>
 
-</style>
