@@ -31,7 +31,8 @@
               </q-item-section>
             </q-item>
              <q-separator />
-            <q-item active clickable v-ripple to="/Equipments">
+            <q-item active clickable v-ripple to="/Equipments-Category">
+            <!-- <q-item active clickable v-ripple to="/Equipments"> -->
               <q-item-section>
                 EQUIPMENTS
               </q-item-section>
