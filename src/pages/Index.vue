@@ -15,7 +15,7 @@
 <div class="q-pa-md" style="max-width: 1920px">
     
     <q-form
-      @submit="onSubmit"
+      @submit.prevent="login"
       class="q-gutter-md"
     >
       <q-input v-model="email" filled type="email" hint="email@example.com"  label="EMAIL" >
@@ -26,20 +26,21 @@
       <q-input v-model="password" filled type="password" label="PASSWORD">
         <template v-slot:append>
           <q-icon
-            :name="isPwd ? 'visibility_off' : 'visibility'"
-            class="cursor-pointer"
-            @click="isPwd = !isPwd"
+            :name="isPwd "
           />
         </template>
       </q-input>
 
 
       <div class="q-pa-md">
-        <q-btn label="LOGIN" to="/Users" type="submit" color="dark"/>
+        <q-btn to="/Users" label="LOGIN"  type="submit" color="dark"/>
+        <!-- Email : monir@gmail.com
+        Password: 123123 
+        I was onClick routing to Users.vue-->
       </div>
     </q-form>
-    <div class="q-pa-md">
-    Don't have account with us? <strong  >REGISTER</strong>
+    <div class="q-pa-md" >
+    Don't have account with us? <q-btn to="/Registration" > REGISTER </q-btn>
   <br>
     Don't remember password? <strong  >REQUEST PASSWORD</strong>
   </div>
@@ -48,11 +49,63 @@
 </template>
 
 <script>
+import axios from "axios";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
 
-  name: 'PageIndex'
+  name: 'PageIndex',
+name: 'Login',
+  data () {
+    return {
+      email: '',
+      username: '',
+      password: '',
+      isPwd: '',
+
+    }
+  },
+  methods: {   
+    
+login (){
+  const login = new FormData();
+  login.append( "password",  this.password);
+  login.append( "email",  this.email);
+
+
+    const options = {
+  method: 'POST',
+  url: 'http://127.0.0.1:8000/api/login',
+  headers: { "Authorization": "Bearer 1|taTce8r3WAtjHOnmPQfoB9l1PELcyyzhhiQQgr2Q"},
+  data: login,
+};
+ axios.request(options).then((response) => {
+   console.log(response.data);
+   this.login = response.data;
+ })
+ .catch(function (error) { console.error(error) ;
+ } );
+
+// this.$refs.login.validate().then(success => {
+//     if (success) {
+
+//       auth.login(FormData).then(err => {        
+//         this.loading = false;
+//         if (err) {
+//           this.$q.notify({ color: 'negative', message: err });
+//           return;
+//         }
+//         this.$q.notify({ color: 'positive', message: 'You have been successfully logged in.' });
+//         this.$router.push('/Users');
+//       });  
+
+//     }else{
+//       this.$q.notify({ color: 'orange', message: 'Please enter required field' });       
+//     }
+//   })
+
+},
+},
 })
 
 </script>
