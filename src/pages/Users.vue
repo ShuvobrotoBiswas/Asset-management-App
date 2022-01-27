@@ -14,7 +14,7 @@
       
         <q-item-section avatar>
           <q-avatar>
-            <img :src=" 'http://127.0.0.1:8000\\uploads\\users\\'+ user.image" alt="" />
+           <img :src="user.image" alt="" />
           </q-avatar>
         </q-item-section>
         <q-item-section>{{ user.full_name }} </q-item-section>
@@ -104,8 +104,8 @@ export default {
   created (){
     const options = {
   method: 'GET',
-  url: 'http://127.0.0.1:8000/api/users',
-  headers: { "Authorization": "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl"}
+  url: 'https://assets-api.dev.sandbox3000.com/api/users',
+  headers: { "Authorization": "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"}
 };
 
 axios.request(options).then( ( response) =>{
@@ -130,10 +130,10 @@ addUsers (){
   
     const options = {
   method: 'POST',
-  url: 'http://127.0.0.1:8000/api/users',
+  url: 'https://assets-api.dev.sandbox3000.com/api/users',
   data: user,
 
-  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl" } 
+  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
