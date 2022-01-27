@@ -251,8 +251,8 @@ export default {
   created ( ){
     const options = {
   method: 'GET',
-  url: "http://127.0.0.1:8000/api/users/"+this.flag,
-  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl"},
+  url: "https://assets-api.dev.sandbox3000.com/api/users/"+this.flag,
+  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"},
 };
 
 axios.request(options).then( ( response) =>{
@@ -269,11 +269,11 @@ axios.request(options).then( ( response) =>{
   
     const options = {
   method: 'PATCH',
-  url:  "http://127.0.0.1:8000/api/products/discard/"+this.flag,
+  url:  "https://assets-api.dev.sandbox3000.com/api/products/discard/"+this.flag,
   data: {
     name:this.products
   },
-  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl" } 
+  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
@@ -289,11 +289,11 @@ markDefective (){
   
     const options = {
   method: 'PATCH',
-  url:  "http://127.0.0.1:8000/api/products/defect/"+this.flag ,
+  url:  "https://assets-api.dev.sandbox3000.com/api/products/defect/"+this.flag ,
   data: {
     name:this.name
   },
-  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl" } 
+  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
@@ -322,11 +322,11 @@ markDefective (){
         user.append( "image",  this.image);
       const options = {
         method: "PUT",
-        url: "http://127.0.0.1:8000/api/users/"+ flag,
+        url: "https://assets-api.dev.sandbox3000.com/api/users/"+ flag,
         data:  user,
 
         headers: {
-          Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl",
+          Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P",
         },
       };
 
