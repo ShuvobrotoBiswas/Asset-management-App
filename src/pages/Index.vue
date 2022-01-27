@@ -75,7 +75,7 @@ login (){
 
     const options = {
   method: 'POST',
-  url: 'http://127.0.0.1:8000/api/login',
+  url: 'https://assets-api.dev.sandbox3000.com/api/login',
   headers: { "Authorization": "Bearer 1|taTce8r3WAtjHOnmPQfoB9l1PELcyyzhhiQQgr2Q"},
   data: login,
 };
