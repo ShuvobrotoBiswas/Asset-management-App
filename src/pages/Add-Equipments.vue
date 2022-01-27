@@ -91,8 +91,8 @@ export default {
   created (){
     const options = {
   method: 'GET',
-  url: 'http://127.0.0.1:8000/api/categories/',
-  headers: { "Authorization": "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl"}
+  url: 'https://assets-api.dev.sandbox3000.com/api/categories/',
+  headers: { "Authorization": "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"}
 };
 
 axios.request(options).then( ( response) =>{
@@ -118,9 +118,9 @@ addProducts (){
   
     const options = {
   method: 'POST',
-  url: 'http://127.0.0.1:8000/api/products/',
+  url: 'https://assets-api.dev.sandbox3000.com/api/products/',
 data: attributes,
-  headers: { Authorization: "Bearer 2|CowcsAIjzegopghpUBJu0cjv3dMeQtFdS9Z2Ovfl" } 
+  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
