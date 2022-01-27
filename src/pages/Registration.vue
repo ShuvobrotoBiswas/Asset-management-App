@@ -13,7 +13,7 @@
             </div>
           </q-card-section>
           <q-card-section>
-            <q-form class="q-px-sm q-pt-xl q-pb-lg">
+            <q-form @submit.prevent="registration" class="q-px-sm q-pt-xl q-pb-lg">
               
               <q-input square clearable v-model="first_name" type="username" label="first_name">
                 <template v-slot:prepend>
@@ -53,7 +53,15 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
-            <q-btn @submit.prevent="registration" unelevated size="lg" color="purple-4" class="full-width text-white" label="REGISTRATION" />
+           <q-btn 
+                text-color="white"
+                unelevated size="lg" color="purple-4" class="full-width text-white" 
+                label="REGISTRATION"
+                type="submit"
+                no-caps
+                v-close-popup
+              /> 
+            <!-- <q-btn @submit.prevent="registration" unelevated size="lg" color="purple-4" class="full-width text-white" label="REGISTRATION" /> -->
           </q-card-actions>
           <q-card-actions class="q-px-lg">
             <q-btn to="/" unelevated size="lg" color="purple-4" class="full-width text-white" label="Return to login" />
@@ -77,6 +85,8 @@ export default {
       last_name: '',
       password: '',
       image: '',
+      register: [],
+
     };
   },
 
@@ -91,12 +101,10 @@ registration (){
   register.append( "image",  this.image);
   register.append( "password",  this.password);
   register.append( "email",  this.email);
-
-  
-  
+ 
     const options = {
   method: 'POST',
-  url: '127.0.0.1:8000/api/admins/register',
+  url: 'https://assets-api.dev.sandbox3000.com/api/admins/',
   headers: { "No Auth": " "},
 
   data: register,
