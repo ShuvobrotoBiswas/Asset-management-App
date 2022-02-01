@@ -14,7 +14,7 @@
       
         <q-item-section avatar>
           <q-avatar>
-           <img :src=" 'http://127.0.0.1:8000\\uploads\\users\\'+ user.image" alt="" />
+           <img :src="user.image" alt="" />
            <!-- <img :src="user.image" alt="" /> -->
           </q-avatar>
         </q-item-section>
