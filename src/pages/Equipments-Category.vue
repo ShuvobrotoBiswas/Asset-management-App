@@ -160,7 +160,7 @@ export default {
       const options = {
         method: "GET",
         url: "https://assets-api.dev.sandbox3000.com/api/categories",
-        headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"},
+        headers: { Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu"},
       };
 
       axios
@@ -184,7 +184,7 @@ export default {
           name: this.name,
         },
         headers: {
-          Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P",
+          Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu",
         },
       };
 
@@ -210,12 +210,12 @@ export default {
     editCategory(flag) {
       const options = {
         method: "PATCH",
-        url: "https://assets-api.dev.sandbox3000.com/api/categories/6" + flag,
+        url: "https://assets-api.dev.sandbox3000.com/api/categories/"+this.flag,
         data: {
           name: this.name,
         },
         headers: {
-          Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P",
+          Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu",
         },
       };
 
@@ -242,9 +242,9 @@ export default {
     deleteCategory(flag) {
       const options = {
         method: "DELETE",
-        url: "https://assets-api.dev.sandbox3000.com/api/categories" + flag,
+        url: "https://assets-api.dev.sandbox3000.com/api/categories"+this.flag,
         headers: {
-          Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P",
+          Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu",
         },
       };
 
