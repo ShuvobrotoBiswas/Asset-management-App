@@ -33,10 +33,10 @@
 
 
       <div class="q-pa-md">
-        <q-btn to="/Users" label="LOGIN"  type="submit" color="dark"/>
-        <!-- Email : monir@gmail.com
-        Password: 123123 
-        I was onClick routing to Users.vue-->
+        <q-btn  label="LOGIN"  type="submit" color="dark"/>
+        <!-- Email : sasamrat0@gmail.com
+        Password: 123456 
+        -->
       </div>
     </q-form>
     <div class="q-pa-md" >
@@ -62,11 +62,11 @@ name: 'Login',
       username: '',
       password: '',
       isPwd: '',
-
+      token: '',
+      admin:  null,
     }
   },
   methods: {   
-    
 login (){
   const login = new FormData();
   login.append( "password",  this.password);
@@ -75,13 +75,18 @@ login (){
 
     const options = {
   method: 'POST',
-  url: 'https://assets-api.dev.sandbox3000.com/api/login',
-  headers: { "Authorization": "Bearer 1|taTce8r3WAtjHOnmPQfoB9l1PELcyyzhhiQQgr2Q"},
+  url: 'https://assets-api.dev.sandbox3000.com/api/admins/login',
+  // headers: { "Authorization": "Bearer 14|tnhxkKlBUkWuPzvXhKnqX15OtgR2VOdVV3ps2DdB"},
+  
   data: login,
 };
  axios.request(options).then((response) => {
    console.log(response.data);
-   this.login = response.data;
+   this.admin = response.data;
+   this.id = response.data.data.id;
+   this.token = response.data.token;
+   localStorage.setItem=("token", response.data.token)
+   this.$router.push('/Users')
  })
  .catch(function (error) { console.error(error) ;
  } );
