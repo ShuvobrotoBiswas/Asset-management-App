@@ -74,7 +74,10 @@
   <q-dialog  v-model="mark" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
-          <div class="text-h6">Explain the defect
+          <div class="text-h6">    
+          
+          
+           the defect
           </div>
         </q-card-section>
         <q-card-section class="q-pt-none">
@@ -120,7 +123,7 @@ export default {
     const options = {
   method: 'GET',
   url: "https://assets-api.dev.sandbox3000.com/api/products/"+this.flag,
-  headers: { "Authorization": "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"}
+  headers: { "Authorization": "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu"}
 };
 
 axios.request(options).then( ( response) =>{
@@ -141,11 +144,11 @@ deleteCategory (){
   
     const options = {
   method: 'delete',
-  url:  "https://assets-api.dev.sandbox3000.com/api/products/5" ,
+  url: "https://assets-api.dev.sandbox3000.com/api/products/"+this.flag,
   data: {
     name:this.name
   },
-  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
+  headers: { Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
