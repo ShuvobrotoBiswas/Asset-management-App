@@ -95,7 +95,7 @@ export default {
     const options = {
   method: 'GET',
   url: 'https://assets-api.dev.sandbox3000.com/api/categories/',
-  headers: { "Authorization": "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"}
+  headers: { "Authorization": "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu"}
 };
 
 axios.request(options).then( ( response) =>{
@@ -120,11 +120,11 @@ editProducts (){
   attributes.append( "discard_details",  this.discard_details);
     const options = {
   method: 'PATCH',
-  url: 'https://assets-api.dev.sandbox3000.com/api/products/5',
+  url: 'https://assets-api.dev.sandbox3000.com/api/products/'+this.flag,
   data: {
     name:this.attributes
   },
-  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
+  headers: { Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
