@@ -81,7 +81,7 @@
       </q-header>
     <div class="flex flex-center" >
     <q-avatar size="100px" >
-     <img :src=" 'http://127.0.0.1:8000\\uploads\\users\\'+ assign.image" alt="" />
+     <img :src="assign.image" alt="" />
     </q-avatar>
     </div>
 
