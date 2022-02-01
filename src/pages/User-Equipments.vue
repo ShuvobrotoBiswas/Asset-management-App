@@ -170,7 +170,7 @@
         name="Equipment"
         v-model="Equipment"
         color="primary"
-        label="Equipment Name"
+        label="Equipment ID"
       />
         <!-- <q-search
         v-model="searchModel"
@@ -193,7 +193,7 @@
                 color="blue"
                 text-color="white"
                 unelevated
-                label="Save"
+                label="Search"
                 type="submit"
                 no-caps
                 v-close-popup
@@ -252,7 +252,7 @@ export default {
     const options = {
   method: 'GET',
   url: "https://assets-api.dev.sandbox3000.com/api/users/"+this.flag,
-  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P"},
+  headers: { Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu"},
 };
 
 axios.request(options).then( ( response) =>{
@@ -273,7 +273,7 @@ axios.request(options).then( ( response) =>{
   data: {
     name:this.products
   },
-  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
+  headers: { Authorization: "Bearer 190|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
@@ -293,7 +293,7 @@ markDefective (){
   data: {
     name:this.name
   },
-  headers: { Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P" } 
+  headers: { Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu" } 
 };
  axios.request(options).then((response) => {
    console.log(response.data);
@@ -322,11 +322,11 @@ markDefective (){
         user.append( "image",  this.image);
       const options = {
         method: "PUT",
-        url: "https://assets-api.dev.sandbox3000.com/api/users/"+ flag,
+        url: "https://assets-api.dev.sandbox3000.com/api/users"+this.flag,
         data:  user,
 
         headers: {
-          Authorization: "Bearer 4|h3dn0QCHz7pSe4VBqVERSoI9VMsKDG8kM0sYkX6P",
+          Authorization: "Bearer 90|qfca55VRwQmaJ1Mw4lEmU8GdVz7CLYOE30cJRwqu",
         },
       };
 
