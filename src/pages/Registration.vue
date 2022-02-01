@@ -45,14 +45,12 @@
                   <q-icon name="lock" />
                 </template>
               </q-input>
-               <q-input square clearable v-model="password" type="password" label="password_confirmation">
+               <q-input square clearable v-model="password_con" type="password" label="password_confirmation">
                 <template v-slot:prepend>
                   <q-icon name="lock" />
                 </template>
               </q-input>
-            </q-form>
-          </q-card-section>
-          <q-card-actions class="q-px-lg">
+               <q-card-actions class="q-px-lg">
            <q-btn 
                 text-color="white"
                 unelevated size="lg" color="purple-4" class="full-width text-white" 
@@ -66,6 +64,9 @@
           <q-card-actions class="q-px-lg">
             <q-btn to="/" unelevated size="lg" color="purple-4" class="full-width text-white" label="Return to login" />
           </q-card-actions>
+            </q-form>
+          </q-card-section>
+         
          
         </q-card>
       </div>
@@ -84,6 +85,7 @@ export default {
       first_name: '',
       last_name: '',
       password: '',
+      password_con:'',
       image: '',
       register: [],
 
@@ -100,18 +102,19 @@ registration (){
   register.append( "last_name",  this.last_name);
   register.append( "image",  this.image);
   register.append( "password",  this.password);
+  register.append( "password_confirmation",  this.password_con);
   register.append( "email",  this.email);
  
     const options = {
   method: 'POST',
-  url: 'https://assets-api.dev.sandbox3000.com/api/admins/',
-  headers: { "No Auth": " "},
+  url: 'https://assets-api.dev.sandbox3000.com/api/admins/register',
+  // headers: { "No Auth": " "},
 
   data: register,
 };
  axios.request(options).then((response) => {
    console.log(response.data);
-   this.register = response.data;
+   this.admin = response.data;
  })
  .catch(function (error) { console.error(error) ;
  } );
